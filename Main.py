@@ -20,7 +20,7 @@ class GUI(Tk):
         self.dir_name = None
         self.button_Frame = None
         self.start_Button = None
-        self.geometry('500x500')
+        self.geometry('600x600')
 
     def get_path(self):
         self.path = filedialog.askdirectory()  # Opens directory dialog
