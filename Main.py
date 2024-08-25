@@ -34,7 +34,10 @@ class GUI(Tk):
             self.button_Frame, text='Start',
             command=lambda: self._start(path_value),
             width=20,
-            height=2
+            height=2,
+            activebackground='Blue',
+            background='#1DAF28',
+            activeforeground='Red'
         )
         self.start_Button.pack(anchor='center')
 
@@ -50,12 +53,17 @@ class GUI(Tk):
             exit()
         # FIXME: Create dictionary for file types instead of if statements
         for file in self.file_list:
+            if os.path.isdir(file):
+                count += 1
+                continue  # Skips file directories
             if file.endswith(('.png', '.jpg')):
                 self.dir_name = 'ImgFiles'
             elif file.endswith(('.txt', '.docx', '.pdf', '.rtf')):
                 self.dir_name = 'TextFiles'
             elif file.endswith('.exe'):
                 self.dir_name = 'Executables'
+            elif file.endswith(('.rar', '.zip', '.7zip')):
+                self.dir_name = 'CompressedFiles'
             else:
                 self.dir_name = 'Misc'
 
