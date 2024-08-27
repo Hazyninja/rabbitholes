@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fa8c128-d983-4e5b-a69c-3361a98198bc" name="Changes" comment="Fixed all file directories being stored in the misc folder.">
+    <list default="true" id="2fa8c128-d983-4e5b-a69c-3361a98198bc" name="Changes" comment="Added dictionary and generator for file extension sorting.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
     </list>
