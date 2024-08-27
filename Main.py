@@ -3,13 +3,16 @@ from tkinter import filedialog
 import os
 import shutil
 
-"""This is a sorting script with a GUI that handles sorting via file 
-type. After selecting the folder needed to be sorted, click the start
+# Added dictionary and generator for file extension sorting
+"""This is a sorting script with a GUI that handles sorting via file
+ extension. After selecting the folder needed to be sorted, click the start
  button to begin the sort. The files are sorted into three folders 
  that are created if needed inside the parent folder."""
 
 # FIXME: Add browsing support within app instead of on launch
 # FIXME: Add the ability to select multiple folders
+# FIXME: Add customizable output directories
+
 
 class GUI(Tk):
     def __init__(self):
@@ -51,21 +54,28 @@ class GUI(Tk):
             self.empty_error = Label(text='This folder is empty')
             self.empty_error.pack()
             exit()
-        # FIXME: Create dictionary for file types instead of if statements
+
+        # Dictionary associating file extensions and directory names
+        file_list = {
+            'ImgFiles': ('.png', '.jpg'),
+            'TextFiles': ('.txt', '.docx', '.pdf', '.rtf'),
+            'Executables': '.exe',
+            'CompressedFiles': ('.rar', '.zip', '.7zip'),
+        }
+        # Iterate over files in directory
         for file in self.file_list:
             if os.path.isdir(file):
                 count += 1
-                continue  # Skips file directories
-            if file.endswith(('.png', '.jpg')):
-                self.dir_name = 'ImgFiles'
-            elif file.endswith(('.txt', '.docx', '.pdf', '.rtf')):
-                self.dir_name = 'TextFiles'
-            elif file.endswith('.exe'):
-                self.dir_name = 'Executables'
-            elif file.endswith(('.rar', '.zip', '.7zip')):
-                self.dir_name = 'CompressedFiles'
-            else:
-                self.dir_name = 'Misc'
+                continue
+
+            # Default directory
+            self.dir_name = 'Misc'
+
+            for directory, filetypes in file_list.items():
+                # Generator checks file type
+                if any(file.endswith(filetype) for filetype in filetypes):
+                    self.dir_name = directory
+                    break
 
             self.new_path = os.path.join(path_value, self.dir_name)
             self.file_list = os.listdir()

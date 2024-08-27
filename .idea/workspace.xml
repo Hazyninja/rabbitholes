@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fa8c128-d983-4e5b-a69c-3361a98198bc" name="Changes" comment="Original Code. Needs refactoring for efficiency.">
+    <list default="true" id="2fa8c128-d983-4e5b-a69c-3361a98198bc" name="Changes" comment="Fixed all file directories being stored in the misc folder.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
     </list>
@@ -42,6 +42,11 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;GitIgnore&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
@@ -97,7 +102,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724540283529</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fixed all file directories being stored in the misc folder.">
+      <option name="closed" value="true" />
+      <created>1724553397478</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1724553397478</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -113,6 +126,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Original Code. Needs refactoring for efficiency." />
-    <option name="LAST_COMMIT_MESSAGE" value="Original Code. Needs refactoring for efficiency." />
+    <MESSAGE value="Fixed all file directories being stored in the misc folder." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed all file directories being stored in the misc folder." />
   </component>
 </project>
