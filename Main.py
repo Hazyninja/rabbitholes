@@ -5,7 +5,7 @@ import os
 import shutil
 
 # Added dictionary and generator for file extension sorting
-"""This is a sorting script with a GUI that handles sorting via file
+"""This is a sorting script with a GUI that handles sorting by file
  extension. After selecting the folder needed to be sorted, click the start
  button to begin the sort. The files are sorted into three folders 
  that are created if needed inside the parent folder."""
@@ -25,7 +25,7 @@ class GUI(Tk):
         self.start_Button = None
         self.browse_Button = None
         self.path = None
-        self.geometry('550x250')
+        self.geometry('550x400')
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
         self.title('Rabbithole Sorter')
@@ -36,26 +36,33 @@ class GUI(Tk):
             self, orient='horizontal',
             length=300, mode='determinate'
         )
-        self.progress.grid(row=6, column=0, columnspan=2, pady=10)
+        self.progress.grid(row=10, column=0, columnspan=2, pady=10)
+        # Button styling
+        style = ttk.Style()
+        style.configure(
+            'TButton',
+            background='#1DAF28',
+            foreground='Red',
+            font=('Helvetica, 12'),
+            relief='groove',
+            highlightthickness=10,
+            focuscolor='Black'
+        )
 
     def create_browse_button(self):
         # Sets browse button in window
         self.button_Frame = Frame(self)
         self.button_Frame.grid(
-            row=5, column=0,
+            row=9, column=0,
             padx=5, pady=5,
             sticky='n'
         )
-        self.browse_Button = Button(
+        self.browse_Button = ttk.Button(
             self.button_Frame, text='Browse',
             command=self.get_path,
-            width=20,
-            height=2,
-            activebackground='Blue',
-            background='#1DAF28',
-            activeforeground='Red'
+            width=10,
         )
-        self.browse_Button.grid(row=5, column=3, padx=5, pady=5)
+        self.browse_Button.grid(row=5, column=0, padx=5, pady=5, sticky='w')
 
     def get_path(self):
         self.path = filedialog.askdirectory()  # Opens directory dialog
@@ -69,7 +76,9 @@ class GUI(Tk):
         self.user_dirs = {}
         file_types = [
             'ImgFiles', 'TextFiles',
-            'Executables', 'CompressedFiles'
+            'Executables', 'CompressedFiles',
+            'Audio', 'Video', 'Documents',
+            'CodeFiles'
         ]
         # Retrieve the index and value for proper grid placement
         for i, file_type in enumerate(file_types):
@@ -84,18 +93,14 @@ class GUI(Tk):
 
     def create_start_button(self, path_value):
         # Calls start_sort on click to begin sorting
-        self.start_Button = Button(
+        self.start_Button = ttk.Button(
             self.button_Frame, text='Start',
             command=lambda: threading.Thread(
                 target=self.start_sort, args=(path_value,)
             ).start(),
-            width=20,
-            height=2,
-            activebackground='Blue',
-            background='#1DAF28',
-            activeforeground='Red'
+            width=10,
         )
-        self.start_Button.grid(row=5, column=4, pady=5)
+        self.start_Button.grid(row=5, column=5, pady=5, sticky='e')
 
     def start_sort(self, path_value):
         # Main function to sort files
@@ -112,10 +117,33 @@ class GUI(Tk):
 
         # Dictionary associating file extensions and directory names
         file_list = {
-            'ImgFiles': ('.png', '.jpg'),
-            'TextFiles': ('.txt', '.docx', '.pdf', '.rtf'),
-            'Executables': '.exe',
-            'CompressedFiles': ('.rar', '.zip', '.7zip'),
+            'ImgFiles': (
+                '.png', '.jpg', '.jpeg', '.gif',
+                '.bmp', '.tiff', '.svg'
+            ),
+            'TextFiles': (
+                '.txt', '.docx', '.pdf', '.rtf',
+                '.md', '.odt', '.csv'
+            ),
+            'Executables': (
+                '.exe', '.bat', '.sh', '.msi'
+            ),
+            'CompressedFiles': (
+                '.rar', '.zip', '.7zip', '.tar',
+                '.gz', '.bz2', '.xz'
+            ),
+            'Audio': (
+                '.mp3', '.wav', '.aac', '.flac', '.ogg'
+            ),
+            'Video': (
+                '.mp4', '.avi', '.mkv', '.mov', '.wmv'
+            ),
+            'Documents': (
+                '.xlsx', '.pptx', '.ods'
+            ),
+            'CodeFiles': (
+                '.py', '.java', '.cpp', '.js', '.html', '.css'
+            )
         }
         # Iterate over files in directory
         for file in self.file_list:
