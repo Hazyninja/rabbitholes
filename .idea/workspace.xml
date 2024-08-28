@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fa8c128-d983-4e5b-a69c-3361a98198bc" name="Changes" comment="Added dictionary and generator for file extension sorting.">
+    <list default="true" id="2fa8c128-d983-4e5b-a69c-3361a98198bc" name="Changes" comment="Added directory renaming, browse button. Switched to grid.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
     </list>
@@ -110,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724553397478</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added directory renaming, browse button. Switched to grid.">
+      <option name="closed" value="true" />
+      <created>1724756615645</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1724756615645</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -127,6 +135,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Original Code. Needs refactoring for efficiency." />
     <MESSAGE value="Fixed all file directories being stored in the misc folder." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed all file directories being stored in the misc folder." />
+    <MESSAGE value="Added directory renaming, browse button. Switched to grid." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added directory renaming, browse button. Switched to grid." />
   </component>
 </project>

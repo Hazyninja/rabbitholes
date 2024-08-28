@@ -1,5 +1,6 @@
 from tkinter import *
-from tkinter import filedialog
+from tkinter import filedialog, ttk
+import threading
 import os
 import shutil
 
@@ -24,13 +25,20 @@ class GUI(Tk):
         self.start_Button = None
         self.browse_Button = None
         self.path = None
-        self.geometry('600x600')
+        self.geometry('550x250')
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
-        self.browse_button()
-        self.usr_defined_dir()
+        self.title('Rabbithole Sorter')
+        self.create_browse_button()
+        self.define_dir()
+        # Initialize progress bar
+        self.progress = ttk.Progressbar(
+            self, orient='horizontal',
+            length=300, mode='determinate'
+        )
+        self.progress.grid(row=6, column=0, columnspan=2, pady=10)
 
-    def browse_button(self):
+    def create_browse_button(self):
         # Sets browse button in window
         self.button_Frame = Frame(self)
         self.button_Frame.grid(
@@ -47,16 +55,16 @@ class GUI(Tk):
             background='#1DAF28',
             activeforeground='Red'
         )
-        self.browse_Button.grid(row=5, column=3, padx=20, pady=5)
+        self.browse_Button.grid(row=5, column=3, padx=5, pady=5)
 
     def get_path(self):
         self.path = filedialog.askdirectory()  # Opens directory dialog
         # Creates start button if one does not exist
         if self.path:
             if not self.start_Button:
-                self.start_button(self.path)
+                self.create_start_button(self.path)
 
-    def usr_defined_dir(self):
+    def define_dir(self):
         # User inputs for custom directory names
         self.user_dirs = {}
         file_types = [
@@ -65,37 +73,39 @@ class GUI(Tk):
         ]
         # Retrieve the index and value for proper grid placement
         for i, file_type in enumerate(file_types):
-            print(f"Creating input for {file_type} at row {i}")  # Debugging print
-
             label = Label(
                 self,
                 text=f'{file_type} Directory Name: '
             )
-            label.grid(row=i+1, column=0, padx=50, pady=5, sticky='w')
+            label.grid(row=i+1, column=0, padx=50, pady=5, sticky='e')
             entry = Entry(self)
             entry.grid(row=i+1, column=1, padx=50, pady=5, sticky='w')
             self.user_dirs[file_type] = entry
 
-    def start_button(self, path_value):
-        # Calls _start on click to begin sorting
+    def create_start_button(self, path_value):
+        # Calls start_sort on click to begin sorting
         self.start_Button = Button(
             self.button_Frame, text='Start',
-            command=lambda: self._start(path_value),
+            command=lambda: threading.Thread(
+                target=self.start_sort, args=(path_value,)
+            ).start(),
             width=20,
             height=2,
             activebackground='Blue',
             background='#1DAF28',
             activeforeground='Red'
         )
-        self.start_Button.grid(row=5, column=4, pady=5, padx=20)
+        self.start_Button.grid(row=5, column=4, pady=5)
 
-    def _start(self, path_value):
+    def start_sort(self, path_value):
         # Main function to sort files
         count = 0
         os.chdir(path_value)  # Change directory to selected folder
         self.file_list = os.listdir()  # Stores file names in file_list
         num_files = len(self.file_list)
+        self.progress['maximum'] = num_files  # Sets progress bar count
         if len(self.file_list) == 0:
+            # Checks if file list is empty and returns error if true
             self.empty_error = Label(text='This folder is empty')
             self.empty_error.grid(row=2, column=0, pady=5)
             exit()
@@ -130,6 +140,8 @@ class GUI(Tk):
                 os.mkdir(self.new_path)
             shutil.move(file, self.new_path)  # Moves file to new location
             count += 1
+            self.progress['value'] = count
+            self.update_idletasks()
 
         if count == num_files:
             self.finish_success = Label(text='Success!')
