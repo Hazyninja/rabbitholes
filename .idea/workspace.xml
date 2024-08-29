@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fa8c128-d983-4e5b-a69c-3361a98198bc" name="Changes" comment="Added more file extensions and added progress bar.">
-      <change afterPath="$PROJECT_DIR$/Images/background.png" afterDir="false" />
+    <list default="true" id="2fa8c128-d983-4e5b-a69c-3361a98198bc" name="Changes" comment="Added dynamic background and label styling">
+      <change afterPath="$PROJECT_DIR$/Images/blue_texture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/file_sorter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
     </list>
@@ -42,6 +44,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Python.Main.executor": "Run",
+    "Python.file_sorter.executor": "Run",
     "Python.scratch_2.executor": "Run",
     "Python.tkinter font gui.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -171,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724842858731</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added dynamic background and label styling">
+      <option name="closed" value="true" />
+      <created>1724891235914</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1724891235914</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,6 +202,7 @@
     <MESSAGE value="Fixed all file directories being stored in the misc folder." />
     <MESSAGE value="Added directory renaming, browse button. Switched to grid." />
     <MESSAGE value="Added more file extensions and added progress bar." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more file extensions and added progress bar." />
+    <MESSAGE value="Added dynamic background and label styling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added dynamic background and label styling" />
   </component>
 </project>
